@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mk体育 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9d7 0%, #f5d6bd 50%, #edc4a3 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.2rem 1.2rem;
+            line-height: 1.7;
+            color: #3b2e24;
+        }
+
+        .page-card {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 250, 242, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 40px;
+            padding: 2.8rem 2.4rem;
+            box-shadow: 0 18px 36px -12px rgba(90, 55, 30, 0.25), 0 6px 12px -4px rgba(60, 40, 20, 0.08);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 235, 215, 0.5);
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .page-card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #b68b6b;
+            border-bottom: 2px solid #e3c9b2;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1.4rem;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.25;
+            color: #2d2016;
+            margin-bottom: 0.8rem;
+        }
+
+        .opening {
+            font-size: 1.1rem;
+            background: #f7ede2;
+            padding: 1rem 1.6rem;
+            border-radius: 60px 20px 60px 20px;
+            margin: 1.2rem 0 1.8rem 0;
+            color: #3d2b1c;
+            display: inline-block;
+            box-shadow: 0 2px 6px rgba(160, 110, 70, 0.08);
+        }
+
+        .intro-text {
+            margin-bottom: 1.8rem;
+            font-size: 1rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 2rem 0 1.8rem 0;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: #fcf7f1;
+            padding: 1rem 1.4rem;
+            margin-bottom: 0.7rem;
+            border-radius: 40px;
+            border-left: 5px solid #dfb999;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: background 0.15s;
+        }
+
+        .feature-list li::before {
+            content: "·";
+            font-weight: 700;
+            color: #b78b68;
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-right: 0.2rem;
+        }
+
+        .feature-list li strong {
+            color: #653f24;
+            font-weight: 550;
+        }
+
+        .subtle-note {
+            background: #f3e4d6;
+            padding: 1.2rem 1.6rem;
+            border-radius: 36px;
+            margin: 2rem 0 1.6rem 0;
+            font-size: 0.95rem;
+            color: #3d2d1f;
+            border: 1px solid #e6cfbb;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.4rem 0;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #e1cfbd;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #4f3421;
+            font-size: 0.98rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.92rem;
+            color: #5b4532;
+            padding-left: 0.6rem;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: #dbb99b;
+            color: #2b1d12;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 1rem;
+            border: 1px solid #c9a684;
+            box-shadow: 0 3px 6px rgba(110, 70, 40, 0.08);
+            transition: background 0.2s, transform 0.1s;
+            margin: 0.2rem 0;
+        }
+
+        .link-button:hover {
+            background: #ceaa88;
+            transform: scale(1.02);
+            border-color: #b58b68;
+        }
+
+        .signature-line {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #eddccd;
+            font-size: 0.9rem;
+            color: #7b644f;
+            text-align: right;
+        }
+
+        .inline-link {
+            color: #6f4d30;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b58b68;
+            transition: border 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom: 2px solid #7f5539;
+        }
+
+        .mt-1 {
+            margin-top: 0.6rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 0.6rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-card">
+        <div class="hero-tag">✦ 简明指南</div>
+
+        <h1>mk体育 · 一种观察方式</h1>
+
+        <div class="opening">
+            不是繁杂的入口，而是你熟悉的路标。
+        </div>
+
+        <div class="intro-text">
+            <p>如果你曾觉得体育资讯总是过于喧闹、信息堆叠，那么或许该退一步，看看更安静的叙述。 <strong>mk体育</strong> 并非要成为另一个必须记住的地址，它更像一个温和的提醒：关于运动的记录，原本就可以更直接、更少干扰。</p>
+            <p>这里没有铺满屏幕的弹窗，也没有急迫的催促。页面上的每一段文字、每一个数据，都在自己的节奏里。你可以随时停下来，也可以随时回来。</p>
+        </div>
+
+        <ul class="feature-list">
+            <li><strong>更少的装饰，更多的留白</strong> —— 不靠闪烁的色块吸引视线，内容本身即是重心。</li>
+            <li><strong>克制的信息层级</strong> —— 赛程、记录、观察，分别安置，不堆叠在同一块区域。</li>
+            <li><strong>持续但温和的更新</strong> —— 没有“最新”“重磅”之类的强调，只有如实排列的条目。</li>
+            <li><strong>适合慢慢读</strong> —— 无论是赛前分析还是赛后回顾，语气都保持平稳。</li>
+        </ul>
+
+        <div class="subtle-note">
+            ⚬ 访问前的小提醒：<a href="https://mkslow.com.cn" class="inline-link">mk体育</a> 采用简约布局，部分设备上可能需要允许加载字体以完整显示排版。页面不包含自动播放内容，所有交互都由你决定。
+        </div>
+
+        <div class="faq-mini">
+            <div class="faq-item">
+                <span class="faq-q">—— 这个网站主要提供什么？</span>
+                <span class="faq-a">围绕体育赛事的简明资讯与背景记录，不刻意追逐热点，更注重内容的可读性。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">—— 需要注册或登录吗？</span>
+                <span class="faq-a">完全不需要。所有内容都直接可见，没有会员墙或隐藏页面。</span>
+            </div>
+            <div class="faq-item">
+                <span class="faq-q">—— 更新频率如何？</span>
+                <span class="faq-a">根据赛季节奏自然更新，不追求每日刷新。安静、规律，就像翻阅一本旧杂志。</span>
+            </div>
+        </div>
+
+        <div style="margin: 1.8rem 0 0.8rem;">
+            <a href="https://mkslow.com.cn" class="link-button">mk体育</a>
+        </div>
+
+        <div class="signature-line">
+            <span>慢慢来 运动本身就不该着急</span>
+        </div>
+    </div>
+</body>
+</html>
