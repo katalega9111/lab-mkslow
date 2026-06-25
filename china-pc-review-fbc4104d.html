@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻将胡了 · 深度玩法指南 | 中国电脑麻将</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            background: #f4f2ee;
+            color: #1d1a18;
+        }
+
+        /* 深色头图 —— 杂志专题感 */
+        .hero {
+            background: linear-gradient(145deg, #0f1a2e 0%, #1b2b45 70%, #1e3553 100%);
+            color: #f0ece6;
+            padding: 5rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #c8a96e, #e8cf9c, #c8a96e);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 580px;
+            margin: 0 auto 0.5rem;
+            border-top: 1px solid rgba(255, 215, 150, 0.3);
+            padding-top: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .hero .meta {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            margin-top: 0.5rem;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 480;
+            margin-bottom: 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #e2d7ca;
+            display: inline-block;
+            color: #1d2c43;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 440;
+            margin: 1.5rem 0 0.6rem;
+            color: #2f3e52;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #292521;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #b3763c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #8f5f2d;
+            border-bottom-color: #b3763c;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.8rem 0 0.5rem;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #faf8f5;
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
+            border-left: 4px solid #c8a96e;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1rem;
+            color: #1f2c3d;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #4a4340;
+        }
+
+        .faq-summary {
+            background: #f7f4ef;
+            border-radius: 16px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e4dbd1;
+        }
+
+        .faq-summary p {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-summary p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #1c2a3b;
+        }
+
+        .faq-a {
+            color: #3b332e;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 2rem 0 1.5rem;
+            border-top: 1px solid #dacfc4;
+            margin-top: 0.5rem;
+            color: #5f554b;
+            font-size: 0.95rem;
+        }
+
+        .footer-note p {
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-note .small {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3.2rem 1rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 2rem 1rem 3rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .faq-summary {
+                padding: 1rem 1.2rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .sub {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>麻将胡了</h1>
+    <div class="sub">从规则到手感 · 一站式了解中国电脑麻将</div>
+    <div class="meta">专题特辑 · 深度玩法指南</div>
+</section>
+
+<div class="container">
+
+    <!-- 背景说明：快速识别网站用途 -->
+    <div class="card">
+        <h2>这个网站是做什么的</h2>
+        <p>如果你是第一次来到 <a href="https://china-pc-mahjong.com">麻将胡了</a>，可能会好奇：这里究竟提供什么？简单来说，这是一个围绕中国电脑麻将整理的知识型专题站。它不卖房、不拉群、不搞排名，而是把不同规则、不同平台的麻将玩法放在一起，帮你快速对比和选择。</p>
+        <p>很多朋友一搜“麻将”就看到满屏花哨广告，反而找不到真正有逻辑的内容。而在这个站里，你会看到具体的役种表、算番方式、以及电脑端打牌的实际界面说明——一切都为了让“判断这个网站适不适合我”这件事变得简单。</p>
+    </div>
+
+    <!-- 三段自然介绍 + 特点卡片 -->
+    <div class="card">
+        <h2>从三方面认识它</h2>
+
+        <h3>① 规则对照，不再混淆</h3>
+        <p>国标、日本立直、广东麻将……同样叫“胡”，计分逻辑完全不同。<a href="https://china-pc-mahjong.com">麻将胡了</a> 把主流规则的关键差异列成表格，比如“是否允许吃牌”、“番种上限”、“流局处理”等。你不需要同时打开五六个网页对比，这里一目了然。</p>
+
+        <h3>② 电脑端体验与适配</h3>
+        <p>很多人习惯手机搓麻，但在电脑上玩又是另一套手感——窗口大小、鼠标操作、牌局节奏都不同。网站上整理了几款主流电脑麻将软件的界面特点、配置要求以及牌桌视觉风格，方便你选一个看着顺眼、操作跟手的版本。</p>
+
+        <h3>③ 术语与牌效率</h3>
+        <p>“听牌”、“门清”、“断幺九”这些词到底对应什么？网站里有一份精炼的术语表，不是扔给你一段维基百科，而是用两三句话讲清在实战中怎么用。另外也附了一点关于牌效率的基础思路，适合刚想认真学牌的新手。</p>
+
+        <!-- 内嵌特点卡片 -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>规则对比</strong>
+                <span>国标 / 日麻 / 广东 核心差异横向看</span>
+            </div>
+            <div class="feature-item">
+                <strong>软件推荐</strong>
+                <span>电脑端打牌工具实测与界面截图</span>
+            </div>
+            <div class="feature-item">
+                <strong>术语精讲</strong>
+                <span>不讲废话，只讲打牌用得上的知识</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 场景与FAQ摘要 -->
+    <div class="card">
+        <h2>什么情况下会用到它</h2>
+        <p>也许是周末想约朋友远程打几圈，但不知道哪个平台电脑端比较顺；也许是你一直玩本地麻将，突然想了解立直规则里的“一发”到底什么意思；又或者你只是听人说“麻将胡了”这个词，想找个安静页面看看到底是什么。不论哪种场景，这个站都尽量保持克制和实在——不诱导你注册，不弹出红包，就像一本随手翻的小册子。</p>
+
+        <div class="faq-summary">
+            <p><span class="faq-q">Q：网站更新频率如何？</span><br>
+            <span class="faq-a">A：不定期根据主流麻将软件版本变化做调整，主要信息会保持半年内有效。目前没有邮件订阅，你可以收藏网址过段时间回来看一眼。</span></p>
+            <p><span class="faq-q">Q：有手机版吗？</span><br>
+            <span class="faq-a">A：这个站以电脑端内容为主，但页面做了响应式适配，手机浏览器也能顺利阅读。不过部分软件截图在手机上看会偏小，建议在电脑或平板上浏览。</span></p>
+            <p><span class="faq-q">Q：和“麻将胡了”游戏本身是什么关系？</span><br>
+            <span class="faq-a">A：这是一个信息整理站，并非某个特定游戏或平台的官方页面。名称取自麻将术语，方便大家搜索和记忆。</span></p>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <p>如果你想直接了解规则细节或查看软件列表，可以前往 <a href="https://china-pc-mahjong.com">麻将胡了</a> 慢慢翻阅。</p>
+        <p class="small">所有内容仅供学习参考 · 不构成任何游戏建议</p>
+    </div>
+
+</div>
+
+</body>
+</html>
